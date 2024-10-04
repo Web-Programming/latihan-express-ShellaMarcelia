@@ -7,6 +7,18 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/paketwisata', function(req, res, next) {
+  let listpaketwisata = [
+    {'nama' : 'Wisata The Venetian' , 'harga' : 250000},
+    {'nama' : 'Wisata Macau Tower' , 'harga' : 200000},
+    {'nama' : 'Wisata Senado Square' , 'harga' : 100000}
+  ]
+  res.render('paketwisata', { 
+    title: 'Paket Wisata' ,
+    listpaketwisata: listpaketwisata
+  });
+});
+
+router.get('/paketwisata', function(req, res, next) {
   res.render('paketwisata', { title: 'Paket Wisata' });
 });
 
