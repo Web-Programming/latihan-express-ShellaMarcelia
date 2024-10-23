@@ -46,6 +46,8 @@ const insert = (req, res, next) => {
       aktif: true
     });
   
+
+    
     mhs
       .save()
       .then((result) => {
