@@ -1,25 +1,22 @@
-const mongoose = require("mongoose");
+let mongoose = require("mongoose");
 
-const mahasiswaSchema = new mongoose.Schema({
-    nama:{
-        type: String,
-    },
-    npm:{
-        type: String,
-        required: true,
-    },
-    email:{
-        type: String,
-        required: true,
-        unique: true,
-    },
-    tanggal_lahir:{
-        type: Date,
-    },
-    aktif:{
-        type: Boolean,
-    },
+//https://mongoosejs.com/docs/schematypes.html
+//Create Collection Schema
+let mahasiswaSchema = new mongoose.Schema({
+  nama: String,
+  npm: {
+    type: String,
+    require: true,
+  },
+  email: {
+    type: String,
+    require: true,
+  },
+  tanggal_lahir: {
+    type: Date,
+  },
+  aktif: Boolean,
 });
 
-const Mahasiswa = mongoose.model('Mahasiswa', mahasiswaSchema);
-module.exports = Mahasiswa;
+//create Model from Schema
+mongoose.model("mahasiswa", mahasiswaSchema);
