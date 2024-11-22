@@ -1,23 +1,10 @@
-const mongoose = require("mongoose");
-const mahasiswa = mongoose.model("mahasiswa");
+const Mahasiswa = require("../models/mahasiswa");
 
-// const index = async (req,res) => {
-//     try{
-//         const mahasiswas = await mahasiswa.find({});
-//         res.status(200).json(mahasiswas);
-//         if(!mahasiswas){
-//             res.status(400).json({message: " Collection is Empty"});
-//         }
-//     }catch (error){
-//         res.status(500).json({message : "Error retrieving users", error});
-//     }
-// }
-// module.exports= {index}
 
 //untuk menghandle request get all mahasiswa
-const index = (req, res, next) => {
-    mahasiswa.find({}, { __v: 0 })
-      .then((mahasiswas) => {
+const Index = (req, res, next) => {
+    Mahasiswa.find({}, { __v: 0 })
+      .then((mhs) => {
         const responseMessage = {
             code: 200,
             success: true,
@@ -38,16 +25,13 @@ const index = (req, res, next) => {
 
 //untuk menghandle request insert mahasiswa
 const insert = (req, res, next) => {
-    const mhs = new mahasiswa({
+    const mhs = new Mahasiswa({
       nama: req.body.nama,
       npm: req.body.npm,
       email: req.body.email,
       tanggal_lahir: req.body.tanggal_lahir,
       aktif: true
     });
-  
-
-    
     mhs
       .save()
       .then((result) => {
@@ -71,7 +55,7 @@ const insert = (req, res, next) => {
 
 //untuk menghandle request update mahasiswa
 const update = (req, res, next) => {
-     mahasiswa
+     Mahasiswa
        .findByIdAndUpdate(req.params.id,{
             nama: req.body.nama,
             npm: req.body.npm,
@@ -79,7 +63,7 @@ const update = (req, res, next) => {
             tanggal_lahir: req.body.tanggal_lahir,
          })
         .then((result) => {
-            mahasiswa
+            Mahasiswa
             .findById(req.params.id)
             .then((mhs) =>{
                 const responseMessage = {
@@ -104,7 +88,7 @@ const update = (req, res, next) => {
 
 //untuk menghandle request show detail
 const show = (req, res, next) => {
-    mahasiswa
+    Mahasiswa
         .findById(req.params.id)
         .then((mhs) =>{
             const responseMessage = {
@@ -128,7 +112,7 @@ const show = (req, res, next) => {
 
 //untuk menghandle request delete
 const destroy = (req, res, next) => {
-    mahasiswa
+    Mahasiswa
         .findByIdAndDelete(req.params.id)
         .then((mhs) => {
             const responseMessage = {
@@ -149,5 +133,5 @@ const destroy = (req, res, next) => {
 };
 
 module.exports = {
-    index, insert, update, show, destroy
+    Index, insert, update, show, destroy
 }
