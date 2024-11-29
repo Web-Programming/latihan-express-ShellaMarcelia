@@ -1,5 +1,5 @@
 const passport = require('passport');
-const user = require('user');
+
 
 const login = (req, res, next) => {
     if (!req.body.email || !req.body.password) {
