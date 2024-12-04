@@ -15,13 +15,13 @@ export const routes: Routes = [
         title: 'Details Page'
     },
     {
-    path:'register',
-    component: RegisterComponent,
-    title: 'Register Page'
+        path:'register',
+        component: RegisterComponent,
+        title: 'Register Page'
     },
     {
-    path:'login',
-    component: LoginComponent,
-    title: 'Login Page'
+        path:'login',
+        component: LoginComponent,
+        title: 'Login Page'
     }
 ];

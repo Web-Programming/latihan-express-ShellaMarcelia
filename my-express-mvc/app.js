@@ -12,7 +12,9 @@ var usersRouter = require('./app_server/routes/users');
 var mahasiswaRouter = require('./app_server/routes/mahasiswas');
 var housingRouter = require('./app_server/routes/housing');
 
+var cors = require('cors');
 var app = express();
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname,'app_server', 'views'));
